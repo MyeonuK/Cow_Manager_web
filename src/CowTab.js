@@ -50,8 +50,8 @@ class CowTab extends Tab {
     $tabTitle.innerText = "CowTab";
 
     const $input = document.createElement("input");
-    $input.setAttribute(type, "text");
-    $input.setAttribute(value, "number");
+    $input.type = "text";
+    $input.value = "number";
     $input.setAttribute(onchange, "ccc(this)");
     $tabTitle.appendChild($input);
 

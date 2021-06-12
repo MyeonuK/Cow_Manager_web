@@ -2,7 +2,8 @@
   /* color */
   --color-white: #ffffff;
   --color-gray: #424242;
-  --color-beige: #fffae9;
+  /*--color-beige: #fffae9;*/
+  --color-beige: beige;
 
   /* font size */
   --font-l: 30px;
@@ -99,9 +100,14 @@ body {
   border-top: 0.5px solid var(--color-gray);
 }
 
+.Item > * {
+  width: 15%;
+  text-align: center;
+}
+
 .Item_AnimalNo {
   font-size: var(--font-s);
-  padding-right: var(--layout-s);
+  text-align: left;
 }
 
 .Info_Group {
@@ -111,7 +117,5 @@ body {
 }
 
 .Item_Info {
-  width: auto;
-  padding: calc(var(--layout-ss) / 5) var(--layout-ss);
   font-size: var(--font-ss);
 }

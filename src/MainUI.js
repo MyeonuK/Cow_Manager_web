@@ -62,7 +62,7 @@ class MainUI {
   }
 
   async render() {
-    this.data = new ReadXlsx("data/test.xlsx");
+    this.data = new ReadXlsx("data/data_final.xlsx");
 
     // header
     const $header = document.createElement("header");

@@ -17,9 +17,9 @@ class CowTab extends Tab {
 
   pushData($target, item, itemInfo) {
     const $item = document.createElement("div");
+    $item.className = "item";
     $item.innerHTML = `
-      <div class="Item">
-        <span class="Item_AnimalNo">${item}</span>
+        <a class="Item_AnimalNo" href="https://www.mtrace.go.kr/mtracesearch/cattleNoSearch.do?btsProgNo=0109008401&btsActionMethod=SELECT&cattleNo=${item}"">${item}</a>
         <span class="Info_Group">
           <span class="Item_Info">${itemInfo.HouseNo}번 축사</span>
           <span class="Item_Info">${itemInfo.CageNo}번 우리</span>
@@ -28,10 +28,18 @@ class CowTab extends Tab {
           <span class="Item_Info">${itemInfo.Sex}</span>
           <span class="Item_Info">${itemInfo.BirthDate}</span>
         </span>
-        <span class="Item_Info">${itemInfo.Fam}</span>
-        <span class="Item_Info">${itemInfo.Brucella}</span>
-        <span class="Item_Info">${itemInfo.Tube}</span>
-      </div>`;
+        <span class="Info_Group">
+          <span class="Item_Info">${itemInfo.FamInfo}</span>
+          <span class="Item_Info">${itemInfo.FamDate}</span>
+        </span>
+        <span class="Info_Group">
+          <span class="Item_Info">${itemInfo.BruInfo}</span>
+          <span class="Item_Info">${itemInfo.BruDate}</span>
+        </span>
+        <span class="Info_Group">
+          <span class="Item_Info">${itemInfo.TubeInfo}</span>
+          <span class="Item_Info">${itemInfo.TubeDate}</span>
+        </span>`;
 
     $target.appendChild($item);
   }
@@ -40,6 +48,13 @@ class CowTab extends Tab {
     const $tabTitle = document.createElement("h2");
     $tabTitle.className = "TabTitle";
     $tabTitle.innerText = "CowTab";
+
+    const $input = document.createElement("input");
+    $input.setAttribute(type, "text");
+    $input.setAttribute(value, "number");
+    $input.setAttribute(onchange, "ccc(this)");
+    $tabTitle.appendChild($input);
+
     const $article = document.createElement("article");
     $article.className = "Article";
 

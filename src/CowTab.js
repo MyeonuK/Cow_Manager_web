@@ -15,8 +15,19 @@ class CowTab extends Tab {
     this.render();
   }
 
-  pushData($target, item, itemInfo) {
+  searchItem(value) {
+    let $article = document.getElementById("Article");
+    if ($article != null) {
+      $article.remove();
+    }
+
+    this.$mainDiv.appendChild(this.setArticle(value));
+  }
+
+  getData(item) {
     const $item = document.createElement("div");
+    let itemInfo = this.data[item];
+
     $item.className = "item";
     $item.innerHTML = `
         <a class="Item_AnimalNo" href="https://www.mtrace.go.kr/mtracesearch/cattleNoSearch.do?btsProgNo=0109008401&btsActionMethod=SELECT&cattleNo=${item}"">${item}</a>
@@ -41,7 +52,38 @@ class CowTab extends Tab {
           <span class="Item_Info">${itemInfo.TubeDate}</span>
         </span>`;
 
-    $target.appendChild($item);
+    return $item;
+  }
+
+  setArticle(value) {
+    const $article = document.createElement("article");
+    $article.className = "Article";
+    $article.id = "Article";
+
+    const $itemTitle = document.createElement("div");
+    $itemTitle.className = "Item";
+    $itemTitle.innerHTML = `
+      <span class="Item_AnimalNo">등록번호</span>
+      <span class="Info_Group">
+        <span class="Item_Info">축사 및 우리</span>
+      </span>
+      <span class="Info_Group">
+        <span class="Item_Info">성별</span>
+        <span class="Item_Info">생년월일</span>
+      </span>
+      <span class="Item_Info">구제역</span>
+      <span class="Item_Info">브루셀라</span>
+      <span class="Item_Info">결핵</span>`;
+    $article.appendChild($itemTitle);
+
+    let cowList = Object.keys(this.data);
+    for (let item of cowList) {
+      if (item.includes(value)) {
+        $article.appendChild(this.getData(item));
+      }
+    }
+
+    return $article;
   }
 
   render() {
@@ -49,35 +91,17 @@ class CowTab extends Tab {
     $tabTitle.className = "TabTitle";
     $tabTitle.innerText = "CowTab";
 
+    const $test = document.createElement("span");
     const $input = document.createElement("input");
     $input.type = "text";
-    $input.value = "number";
-    $input.setAttribute(onchange, "ccc(this)");
+    $input.oninput = function () {
+      $test.innerHTML = $input.value;
+    };
+
     $tabTitle.appendChild($input);
+    $tabTitle.appendChild($test);
 
-    const $article = document.createElement("article");
-    $article.className = "Article";
-
-    const $itemTitle = document.createElement("div");
-    $itemTitle.className = "Item";
-    $itemTitle.innerHTML = `
-    <span class="Item_AnimalNo">등록번호</span>
-    <span class="Info_Group">
-      <span class="Item_Info">축사 및 우리</span>
-    </span>
-    <span class="Info_Group">
-      <span class="Item_Info">성별</span>
-      <span class="Item_Info">생년월일</span>
-    </span>
-    <span class="Item_Info">구제역</span>
-    <span class="Item_Info">브루셀라</span>
-    <span class="Item_Info">결핵</span>`;
-    $article.appendChild($itemTitle);
-
-    let cowList = Object.keys(this.data);
-    for (let item of cowList) {
-      this.pushData($article, item, this.data[item]);
-    }
+    let $article = this.setArticle("");
 
     this.$mainDiv.appendChild($tabTitle);
     this.$mainDiv.appendChild($article);

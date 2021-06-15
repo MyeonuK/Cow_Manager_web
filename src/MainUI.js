@@ -57,7 +57,7 @@ class MainUI {
             $tabList[i].show();
           });
         }
-      }, 100);
+      }, 300);
     });
   }
 

@@ -15,14 +15,7 @@ class CowTab extends Tab {
     this.render();
   }
 
-  searchItem(value) {
-    let $article = document.getElementById("Article");
-    if ($article != null) {
-      $article.remove();
-    }
-
-    this.$mainDiv.appendChild(this.setArticle(value));
-  }
+  searchItem() {}
 
   getData(item) {
     const $item = document.createElement("div");
@@ -39,10 +32,7 @@ class CowTab extends Tab {
           <span class="Item_Info">${itemInfo.Sex}</span>
           <span class="Item_Info">${itemInfo.BirthDate}</span>
         </span>
-        <span class="Info_Group">
-          <span class="Item_Info">${itemInfo.FamInfo}</span>
-          <span class="Item_Info">${itemInfo.FamDate}</span>
-        </span>
+        <span class="Item_Info">${itemInfo.Fam}</span>
         <span class="Info_Group">
           <span class="Item_Info">${itemInfo.BruInfo}</span>
           <span class="Item_Info">${itemInfo.BruDate}</span>
@@ -61,22 +51,18 @@ class CowTab extends Tab {
     $article.id = "Article";
 
     const $itemTitle = document.createElement("div");
-    $itemTitle.className = "Item";
+    $itemTitle.className = "ItemTitle";
     $itemTitle.innerHTML = `
-      <span class="Item_AnimalNo">등록번호</span>
-      <span class="Info_Group">
-        <span class="Item_Info">축사 및 우리</span>
-      </span>
-      <span class="Info_Group">
-        <span class="Item_Info">성별</span>
-        <span class="Item_Info">생년월일</span>
-      </span>
+      <a onclick="alert('hello');" class="Item_AnimalNo">등록번호</a>
+      <span class="Item_Info">축사 및 우리</span>
+      <span class="Item_Info">성별 및 생년월일</span>
       <span class="Item_Info">구제역</span>
       <span class="Item_Info">브루셀라</span>
       <span class="Item_Info">결핵</span>`;
     $article.appendChild($itemTitle);
 
-    let cowList = Object.keys(this.data);
+    let cowList = Object.keys(this.data).sort();
+
     for (let item of cowList) {
       if (item.includes(value)) {
         $article.appendChild(this.getData(item));
@@ -92,10 +78,25 @@ class CowTab extends Tab {
     $tabTitle.innerText = "CowTab";
 
     const $test = document.createElement("span");
+    $test.id = "test";
     const $input = document.createElement("input");
+    $input.className = "Input";
     $input.type = "text";
     $input.oninput = function () {
-      $test.innerHTML = $input.value;
+      const $itemArr = document.getElementsByClassName("Item");
+
+      for (let item of $itemArr) {
+        let tempNo = item
+          .getElementsByClassName("Item_AnimalNo")[0]
+          .innerText.replace(/(\s*)/g, "");
+        let tempValue = $input.value.replace(/(\s*)/g, "");
+
+        if (tempNo.includes(tempValue)) {
+          item.style.display = "flex";
+        } else {
+          item.style.display = "none";
+        }
+      }
     };
 
     $tabTitle.appendChild($input);

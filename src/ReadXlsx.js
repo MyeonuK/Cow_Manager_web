@@ -30,7 +30,6 @@ class ReadXlsx {
   parseData() {
     console.log(this.fileData);
     let sheet = this.fileData.Sheets.test;
-    //console.log(sheet);
     let cells = Object.keys(sheet);
     let cellValues = new Array();
     cells.shift();

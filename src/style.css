@@ -90,7 +90,8 @@ body {
   font-size: var(--font-l);
 }
 
-.Item {
+.Item,
+.ItemTitle {
   height: auto;
   padding: var(--layout-ss);
   display: flex;
@@ -100,9 +101,15 @@ body {
   border-top: 0.5px solid var(--color-gray);
 }
 
-.Item > * {
+.Item > *,
+.ItemTitle > * {
   width: 15%;
   text-align: center;
+}
+
+.Item > *:nth-child(2),
+.ItemTitle > *:nth-child(2) {
+  width: 7.5%;
 }
 
 .Item_AnimalNo {
@@ -114,6 +121,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.Info_Group > *:first-child {
+  margin-bottom: 10px;
 }
 
 .Item_Info {

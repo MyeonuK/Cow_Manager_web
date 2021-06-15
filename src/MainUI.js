@@ -94,7 +94,6 @@ class MainUI {
         button.style.fontWeight = "bold";
       });
     });
-    //error : Uncaught TypeError: Cannot read property 'show' of null
 
     const $tool = document.createElement("span");
     $tool.className = "Tool";

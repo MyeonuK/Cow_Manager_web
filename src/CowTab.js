@@ -21,7 +21,7 @@ class CowTab extends Tab {
     const $item = document.createElement("div");
     let itemInfo = this.data[item];
 
-    $item.className = "item";
+    $item.className = "Item";
     $item.innerHTML = `
         <a class="Item_AnimalNo" href="https://www.mtrace.go.kr/mtracesearch/cattleNoSearch.do?btsProgNo=0109008401&btsActionMethod=SELECT&cattleNo=${item}"">${item}</a>
         <span class="Info_Group">
@@ -53,7 +53,7 @@ class CowTab extends Tab {
     const $itemTitle = document.createElement("div");
     $itemTitle.className = "ItemTitle";
     $itemTitle.innerHTML = `
-      <a onclick="alert('hello');" class="Item_AnimalNo">등록번호</a>
+      <a class="Item_AnimalNo">등록번호</a>
       <span class="Item_Info">축사 및 우리</span>
       <span class="Item_Info">성별 및 생년월일</span>
       <span class="Item_Info">구제역</span>

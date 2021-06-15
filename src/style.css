@@ -26,6 +26,7 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: var(--color-beige);
+  font-family: "Noto Sans KR", sans-serif;
 }
 * {
   padding: 0;
@@ -63,6 +64,10 @@ body {
   display: flex;
   flex-direction: row;
   align-items: left;
+}
+
+.Nav_Button {
+  display: none;
 }
 
 .Button {
@@ -129,4 +134,63 @@ body {
 
 .Item_Info {
   font-size: var(--font-ss);
+}
+
+@media only screen and (max-width: 480px) {
+  body {
+    background-color: var(--color-beige);
+  }
+
+  .Nav {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+  }
+
+  .Nav_Button {
+    display: flex;
+  }
+
+  .Nav .Button {
+    display: none;
+  }
+
+  .Button {
+    padding: var(--layout-ss) var(--layout-s);
+    margin: 0 var(--layout-s);
+    font-size: var(--font-m);
+    color: var(--color-beige);
+    border: none;
+    background-color: transparent;
+  }
+
+  .ContentDiv {
+    padding: 0 var(--layout-ss);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .TabTitle {
+    padding: var(--layout-ss);
+    justify-content: right;
+    font-size: var(--font-l);
+  }
+
+  .Input {
+    display: none;
+  }
+
+  .ItemTitle > *,
+  .Item > * {
+    display: none;
+  }
+
+  .ItemTitle > a,
+  .ItemTitle > span:first-of-type,
+  .Item > a,
+  .Item > span:first-of-type {
+    display: flex;
+    width: 50%;
+  }
 }

@@ -81,7 +81,7 @@ class CowTab extends Tab {
     $test.id = "test";
     const $input = document.createElement("input");
     $input.className = "Input";
-    $input.type = "text";
+    $input.type = "number";
     $input.oninput = function () {
       const $itemArr = document.getElementsByClassName("Item");
 

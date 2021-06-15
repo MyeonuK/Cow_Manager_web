@@ -73,12 +73,13 @@ class CowTab extends Tab {
   }
 
   render() {
+    const $tabTitleDiv = document.createElement("div");
+    $tabTitleDiv.className = "TabTitleDiv";
+
     const $tabTitle = document.createElement("h2");
     $tabTitle.className = "TabTitle";
     $tabTitle.innerText = "CowTab";
 
-    const $test = document.createElement("span");
-    $test.id = "test";
     const $input = document.createElement("input");
     $input.className = "Input";
     $input.type = "number";
@@ -98,13 +99,12 @@ class CowTab extends Tab {
         }
       }
     };
-
-    $tabTitle.appendChild($input);
-    $tabTitle.appendChild($test);
+    $tabTitleDiv.appendChild($tabTitle);
+    $tabTitleDiv.appendChild($input);
 
     let $article = this.setArticle("");
 
-    this.$mainDiv.appendChild($tabTitle);
+    this.$mainDiv.appendChild($tabTitleDiv);
     this.$mainDiv.appendChild($article);
   }
 }

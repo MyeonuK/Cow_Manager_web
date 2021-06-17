@@ -15,8 +15,6 @@ class CowTab extends Tab {
     this.render();
   }
 
-  searchItem() {}
-
   getData(item) {
     const $item = document.createElement("div");
     let itemInfo = this.data[item];

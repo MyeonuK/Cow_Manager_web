@@ -11,7 +11,6 @@ class CowTab extends Tab {
 
     this.$mainDiv = $mainDiv;
     $target.appendChild(this.$mainDiv);
-
     this.render();
   }
 
@@ -39,6 +38,14 @@ class CowTab extends Tab {
           <span class="Item_Info">${itemInfo.TubeInfo}</span>
           <span class="Item_Info">${itemInfo.TubeDate}</span>
         </span>`;
+
+    $item.addEventListener("click", function () {
+      let $modal = new Modal(
+        document.getElementsByClassName("CowDiv")[0],
+        item,
+        itemInfo
+      );
+    });
 
     return $item;
   }

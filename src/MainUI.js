@@ -71,7 +71,7 @@ class MainUI {
     // title
     const $title = document.createElement("h1");
     $title.className = "Title";
-    $title.innerText = "Cow_Manager3";
+    $title.innerText = "Cow_Manager";
 
     // nav
     const $nav = document.createElement("nav");

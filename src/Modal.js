@@ -1,23 +1,34 @@
 class Modal {
   $modal = null;
+  title = null;
+  data = null;
 
-  constructor($target) {
+  constructor($target, title, data) {
+    let $app = document.getElementsByTagName("body")[0];
+    $app.style.overflow = "hidden";
+
+    let temp = document.getElementsByClassName("Modal")[0];
+    if (temp) {
+      temp.remove();
+    }
     const $modal = document.createElement("div");
     $modal.className = "Modal";
+    $modal.addEventListener("click", this.remove);
 
     this.$modal = $modal;
     $target.appendChild(this.$modal);
-  }
 
-  show(title, data) {
     this.title = title;
     this.data = data;
 
-    this.$modal.style.display = "flex";
+    this.render();
   }
 
-  hide() {
-    this.$modal.style.display = "none";
+  remove() {
+    let temp = document.getElementsByClassName("Modal")[0];
+    temp.remove();
+    let $app = document.getElementsByTagName("body")[0];
+    $app.style.overflow = "auto";
   }
 
   render() {
@@ -25,14 +36,39 @@ class Modal {
     $modal_window.className = "Modal_Window";
 
     const $modal_title = document.createElement("div");
-    $modal_title.className = "Modal";
+    $modal_title.className = "Modal_Title";
+    $modal_title.innerText = this.title;
 
-    let keyArr = Object.keys(data);
+    const $modal_content = document.createElement("div");
+    $modal_content.className = "Modal_Content";
 
-    for (let key of keyArr) {
-      let $elementTitle = document.createElement("");
-    }
+    $modal_content.innerHTML = `
+    <span class="Modal_Info_Title">축사</span>
+    <span class="Modal_Group">
+      <span class="Modal_Info">${this.data.HouseNo}번 축사</span>
+      <span class="Modal_Info">${this.data.CageNo}번 우리</span>
+    </span>
+    <span class="Modal_Info_Title">성별 및 생년월일</span>
+    <span class="Modal_Group">
+      <span class="Modal_Info">${this.data.Sex}</span>
+      <span class="Modal_Info">${this.data.BirthDate}</span>
+    </span>
+    <span class="Modal_Info_Title">구제역</span>
+      <span class="Modal_Info">${this.data.Fam}</span>
+    <span class="Modal_Info_Title">브루셀라</span>
+    <span class="Modal_Group">
+      <span class="Modal_Info">${this.data.BruInfo}</span>
+      <span class="Modal_Info">${this.data.BruDate}</span>
+    </span>
+    <span class="Modal_Info_Title">결핵</span>
+    <span class="Modal_Group">
+      <span class="Modal_Info">${this.data.TubeInfo}</span>
+      <span class="Modal_Info">${this.data.TubeDate}</span>
+    </span>
+    `;
 
+    $modal_window.appendChild($modal_title);
+    $modal_window.appendChild($modal_content);
     this.$modal.appendChild($modal_window);
   }
 }

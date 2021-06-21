@@ -34,41 +34,34 @@ class Modal {
   render() {
     const $modal_window = document.createElement("div");
     $modal_window.className = "Modal_Window";
-
-    const $modal_title = document.createElement("div");
-    $modal_title.className = "Modal_Title";
-    $modal_title.innerText = this.title;
-
-    const $modal_content = document.createElement("div");
-    $modal_content.className = "Modal_Content";
-
-    $modal_content.innerHTML = `
-    <span class="Modal_Info_Title">축사</span>
-    <span class="Modal_Group">
-      <span class="Modal_Info">${this.data.HouseNo}번 축사</span>
-      <span class="Modal_Info">${this.data.CageNo}번 우리</span>
-    </span>
-    <span class="Modal_Info_Title">성별 및 생년월일</span>
-    <span class="Modal_Group">
-      <span class="Modal_Info">${this.data.Sex}</span>
-      <span class="Modal_Info">${this.data.BirthDate}</span>
-    </span>
-    <span class="Modal_Info_Title">구제역</span>
-      <span class="Modal_Info">${this.data.Fam}</span>
-    <span class="Modal_Info_Title">브루셀라</span>
-    <span class="Modal_Group">
-      <span class="Modal_Info">${this.data.BruInfo}</span>
-      <span class="Modal_Info">${this.data.BruDate}</span>
-    </span>
-    <span class="Modal_Info_Title">결핵</span>
-    <span class="Modal_Group">
-      <span class="Modal_Info">${this.data.TubeInfo}</span>
-      <span class="Modal_Info">${this.data.TubeDate}</span>
-    </span>
+    $modal_window.innerHTML = `
+    <div class="Modal_Content">
+      <div class="Modal_Title">${this.title}</div>
+      <span class="Modal_Info_Title">축사</span>
+      <span class="Modal_Group">
+        <span class="Modal_Info">${this.data.HouseNo}번 축사</span>
+        <span class="Modal_Info">${this.data.CageNo}번 우리</span>
+      </span>
+      <span class="Modal_Info_Title">성별 및 생년월일</span>
+      <span class="Modal_Group">
+        <span class="Modal_Info">${this.data.Sex}</span>
+        <span class="Modal_Info">${this.data.BirthDate}</span>
+      </span>
+      <span class="Modal_Info_Title">구제역</span>
+        <span class="Modal_Info">${this.data.Fam}</span>
+      <span class="Modal_Info_Title">브루셀라</span>
+      <span class="Modal_Group">
+        <span class="Modal_Info">${this.data.BruInfo}</span>
+        <span class="Modal_Info">${this.data.BruDate}</span>
+      </span>
+      <span class="Modal_Info_Title">결핵</span>
+      <span class="Modal_Group">
+        <span class="Modal_Info">${this.data.TubeInfo}</span>
+        <span class="Modal_Info">${this.data.TubeDate}</span>
+      </span>
+    </div>
     `;
 
-    $modal_window.appendChild($modal_title);
-    $modal_window.appendChild($modal_content);
     this.$modal.appendChild($modal_window);
   }
 }

@@ -8,7 +8,7 @@
   /* font size */
   --font-l: 30px;
   --font-m: 25px;
-  --font-s: 20px;
+  --font-s: 18px;
   --font-ss: 15px;
 
   /* layout size */
@@ -148,6 +148,10 @@ body {
 }
 
 @media only screen and (max-width: 700px) {
+  .Nav {
+    display: none;
+  }
+
   .ContentDiv {
     padding: 0 var(--layout-ss);
     display: flex;
@@ -194,7 +198,6 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    padding: 10%;
     transform: translateX(-50%) translateY(-50%);
     display: flex;
     flex-direction: column;
@@ -202,12 +205,28 @@ body {
   }
 
   .Modal_Content {
+    margin: 10%;
     display: flex;
     flex-direction: column;
+  }
+
+  .Modal_Title {
+    font-size: var(--font-m);
+    margin-bottom: 20px;
+  }
+
+  .Modal_Info_Title {
+    font-size: var(--font-s);
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
 
   .Modal_Group {
     display: flex;
     flex-direction: row;
+  }
+
+  .Modal_Info {
+    font-size: var(--font-ss);
   }
 }
